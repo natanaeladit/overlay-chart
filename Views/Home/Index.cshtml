@@ -1,0 +1,148 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section styles
+{
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+
+<div>
+    <img id="image" src="~/img/img.jpg" style="height:120px; display: inline;margin: auto;" />
+    <span id='myDiv' style="display:inline;"></span>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript" src="~/lib/plotly.js/plotly.min.js"></script>
+
+    <script type="text/javascript">
+        var data = [{
+            r: [77.5, 72.5, 70.0, 45.0, 22.5, 42.5, 40.0, 62.5],
+            theta: ["North", "N-E", "East", "S-E", "South", "S-W", "West", "N-W"],
+            hoverinfo: "r",
+            name: "33.5",
+            marker: {
+                color: ["rgb(183, 183, 127)", "black", "yellow", "red", "green", "blue", "orange", "grey"],
+                size: 20,
+                line: {
+                    width: 1
+                }
+            },
+            type: "barpolar"
+        }];
+        var layout = {
+            title: "",
+            font: { size: 9 },
+            polar: {
+                barmode: "overlay",
+                bargap: 0,
+                radialaxis: { ticksuffix: "%", angle: 23, dtick: 20, visible: false },
+                angularaxis: { direction: "clockwise" },
+            },
+            width: 245,
+            height: 245,
+            margin: {
+                l: 28,
+                r: 28,
+                b: 0,
+                t: 0,
+                pad: 4
+            },
+            showlegend: true
+        };
+        var config = {
+            displaylogo: false,
+            scrollZoom: false,
+            displayModeBar: false,
+            staticPlot: false
+        };
+        Plotly.newPlot("myDiv", data, layout, config);
+    </script>
+
+
+    @*
+        <script type="text/javascript">
+            var data = [
+                {
+                    type: "scatterpolar",
+                    mode: "lines",
+                    r: [0, 1.5, 1.5, 0, 2.5, 2.5, 0],
+                    theta: [0, 10, 25, 0, 205, 215, 0],
+                    fill: "toself",
+                    fillcolor: '#709BFF',
+                    line: {
+                        color: 'black'
+                    }
+                },
+                {
+                    type: "scatterpolar",
+                    mode: "lines",
+                    r: [0, 3.5, 3.5, 0],
+                    theta: [0, 55, 75, 0],
+                    fill: "toself",
+                    fillcolor: '#E4FF87',
+                    line: {
+                        color: 'black'
+                    }
+                },
+                {
+                    type: "scatterpolar",
+                    mode: "lines",
+                    r: [0, 4.5, 4.5, 0, 4.5, 4.5, 0],
+                    theta: [0, 100, 120, 0, 305, 320, 0],
+                    fill: "toself",
+                    fillcolor: '#FFAA70',
+                    line: {
+                        color: 'black'
+                    }
+                },
+                {
+                    type: "scatterpolar",
+                    mode: "lines",
+                    r: [0, 4, 4, 0],
+                    theta: [0, 165, 195, 0],
+                    fill: "toself",
+                    fillcolor: '#FFDF70',
+                    line: {
+                        color: 'black'
+                    }
+                },
+                {
+                    type: "scatterpolar",
+                    mode: "lines",
+                    r: [0, 3, 3, 0],
+                    theta: [0, 262.5, 277.5, 0],
+                    fill: "toself",
+                    fillcolor: '#B6FFB4',
+                    line: {
+                        color: 'black'
+                    }
+                }
+            ];
+
+            var layout = {
+                polar: {
+                    radialaxis: {
+                        visible: true,
+                        range: [0, 5]
+                    },
+                    angularaxis: { direction: "clockwise" },
+                },
+                showlegend: false
+            };
+
+            var config = {
+                displaylogo: false,
+                scrollZoom: false,
+                displayModeBar: false,
+                staticPlot: true
+            };
+
+            Plotly.newPlot('myDiv', data, layout, config);
+        </script>
+    *@
+}
